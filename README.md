@@ -1,2 +1,2 @@
 # weekend-plans
-Weekly things to do near us. Public, events only. Update index.html, commit, push.
+Out and About: things to see, hear and taste near us. Public, events only. Update index.html, commit, push.

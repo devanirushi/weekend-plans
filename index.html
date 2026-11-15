@@ -3,174 +3,110 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Weekend Plans</title><meta name="robots" content="noindex">
+<title>Out and About</title><meta name="robots" content="noindex">
 <style>
-:root{--bg:#faf8f4;--card:#fff;--ink:#222;--mute:#666;--line:#e4dfd5;--accent:#8a4b12;--top:#e8f3e8;--back:#eef1f8;--small:#f8f1e2;--warn:#fff0d6;--warnink:#7a4a00;--fam:#dff0f7;--faminK:#0b5570}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17150f;--card:#221f17;--ink:#eee8da;--mute:#a9a291;--line:#3a3629;--accent:#e0a869;--top:#1f2f1f;--back:#1d2230;--small:#2c2619;--warn:#3a2d12;--warnink:#f1c978;--fam:#14303b;--faminK:#8fd0ea}}
-:root[data-theme="dark"]{--bg:#17150f;--card:#221f17;--ink:#eee8da;--mute:#a9a291;--line:#3a3629;--accent:#e0a869;--top:#1f2f1f;--back:#1d2230;--small:#2c2619;--warn:#3a2d12;--warnink:#f1c978;--fam:#14303b;--faminK:#8fd0ea}
+:root{--bg:#faf8f4;--card:#fff;--ink:#222;--mute:#666;--line:#e4dfd5;--accent:#8a4b12;--top:#e8f3e8;--back:#eef1f8;--small:#f8f1e2;--warn:#fff0d6;--warnink:#7a4a00;--okink:#1d5a1d;--hero:#fdeed8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17150f;--card:#221f17;--ink:#eee8da;--mute:#a9a291;--line:#3a3629;--accent:#e0a869;--top:#1f2f1f;--back:#1d2230;--small:#2c2619;--warn:#3a2d12;--warnink:#f1c978;--okink:#9fe09f;--hero:#3a2a14}}
+:root[data-theme="dark"]{--bg:#17150f;--card:#221f17;--ink:#eee8da;--mute:#a9a291;--line:#3a3629;--accent:#e0a869;--top:#1f2f1f;--back:#1d2230;--small:#2c2619;--warn:#3a2d12;--warnink:#f1c978;--okink:#9fe09f;--hero:#3a2a14}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:16px}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding:16px;overflow-wrap:anywhere}
 main{max-width:900px;margin:0 auto}
-h1{font-size:1.6rem;margin:.2em 0}
+h1{font-size:1.8rem;margin:.2em 0 0}
+.sub{margin:.1em 0 .8em;color:var(--mute);font-size:1.02rem}
 h2{font-size:1.2rem;margin:1.6em 0 .4em;color:var(--accent);border-bottom:1px solid var(--line);padding-bottom:4px}
-h3{font-size:1.05rem;margin:0 0 6px}
 p{margin:.4em 0}
-a{color:var(--accent);word-break:break-word}
+a{color:var(--accent)}
 .mute{color:var(--mute);font-size:.9rem}
-.week{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:12px 0}
-.week .hd{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;justify-content:space-between}
-.pick{border-radius:8px;padding:8px 10px;margin:8px 0}
-.pick.top{background:var(--top)}.pick.back{background:var(--back)}.pick.small{background:var(--small)}
-.lbl{font-weight:700;font-size:.78rem;letter-spacing:.04em;text-transform:uppercase;color:var(--mute)}
+.hero{background:var(--hero);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0}
+.hero h2{margin:0 0 4px;border:0;padding:0}
+.hero ul{margin:.2em 0;padding-left:20px}.hero li{margin:5px 0}
 .tag{display:inline-block;font-size:.72rem;font-weight:700;border-radius:99px;padding:1px 8px;margin-left:4px;vertical-align:middle}
 .unc{background:var(--warn);color:var(--warnink)}
-.fam{background:var(--fam);color:var(--faminK)}
+.conf{background:var(--top);color:var(--okink)}
 .note{background:var(--warn);color:var(--warnink);border-radius:8px;padding:8px 10px;margin:10px 0}
-table{width:100%;border-collapse:collapse;font-size:.92rem}
-th,td{text-align:left;padding:6px 6px;border-bottom:1px solid var(--line);vertical-align:top}
-.wrap{overflow-x:auto}
-ul{padding-left:20px;margin:.3em 0}
-
 .item{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:10px 0}
 .item h4{margin:0 0 2px;font-size:1rem}
 .what{margin:2px 0 6px;font-style:italic;color:var(--mute)}
 .meta{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;font-size:.92rem;margin:4px 0}
 .meta b{color:var(--mute);font-weight:600}
-.conf{background:var(--top);color:#1d5a1d}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .conf{color:#9fe09f}}
-.yn{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);font-size:.95rem}
-.yn label{display:inline-flex;align-items:center;gap:5px;min-height:32px}
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+td,th{text-align:left;padding:6px;border-bottom:1px solid var(--line);vertical-align:top}
 .sum td:first-child{white-space:nowrap;font-weight:600}
+.yn{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:8px;padding-top:8px;border-top:1px dashed var(--line)}
+.yn label{display:inline-flex;align-items:center;gap:5px;min-height:32px}
+ul.later{padding-left:20px}
 </style>
 </head>
 <body>
 <main>
-<h1>Things to do: 16 Nov to 13 Dec 2026, by type</h1>
-<p class="mute">What is on near us from 16 Nov to 13 Dec. Take a look and tell Rushi what you would like to do, and we can book it. Times are IST. Drive times are rough estimates. Nothing is booked yet.</p>
-<h2>Top pick per week</h2>
+<h1>Out and About</h1>
+<p class="sub">Good things to see, hear and taste around us, from now to mid February.</p>
+<p class="mute">Updated Sun 15 Nov 2026. Times are IST. Drive times are rough estimates from home. "Unconfirmed" means I could not see it on a ticket or official page, so check before you plan. Nothing here is booked.</p>
+<div class="hero"><h2>This week (Mon 16 to Sun 22 Nov)</h2><ul>
+<li><b>Tue 17 Nov, 9 PM:</b> Dalaliyo, Gujarati stand-up comedy by Hardik Butani, Doozer Club. From Rs 499.</li>
+<li><b>Thu 19 Nov, 7:15 PM:</b> Bhadra Festival concert: sitar (Ustad Shujaat Khan) and tabla (Ustad Fazal Qureshi) in the Old City. Free, but register on BookMyShow first.</li>
+<li><b>Sat 21 Nov, 8:30 PM:</b> Log Kya Kahenge, a local stand-up night at Art House India. From Rs 199 (language not stated).</li>
+<li><b>Sat 21 and Sun 22 Nov:</b> Mere Krishn, a big live stage play on Lord Krishn's life, Hindi, seated, 3 hours. Gates 3:30 PM. From Rs 1,000.</li>
+<li><b>Sun 22 Nov, 7 PM:</b> Papon live at Rajpath Club: soft, folk-flavoured Bollywood and Sufi songs. From Rs 1,299.</li>
+<li><b>Sun 22 Nov, 5:30 PM:</b> Darshan Raval, pop and romantic songs, Savanna Party Lawn. From Rs 1,499.</li></ul></div>
+<h2>Book early</h2>
+<p class="mute">Popular events that can sell out, sorted by when to book. Prices are "from" prices.</p>
+<div class="item"><h4>Arijit Singh, India Tour <span class="tag unc">PRICE AND SEATS UNCONFIRMED</span></h4><p class="what">India's biggest film-music singer ("Tum Hi Ho" and many more); stadium show for his 20 years in music.</p><div class="meta"><b>Date</b><span>Sat 9 Jan 2027, about 6 PM</span><b>Where</b><span>Narendra Modi Stadium, about 30 min from home (est.)</span><b>Price</b><span>Not found</span><b>Tickets</b><span>thumpN only (official seller)</span><b>Sales</b><span>On sale since 13 Oct. Check now, it may be sold out.</span><b>Book by</b><span><b style="color:var(--accent)">BOOK NOW</b></span></div><p class="mute">Date and venue appear on Bandsintown and Shazam listings; I could not see seat availability. <a href="https://www.bandsintown.com/e/109005327?app_id=szm_feed&came_from=283">Source</a></p></div>
+<div class="item"><h4>Papon live <span class="tag conf">CONFIRMED</span></h4><p class="what">Singer of soft, folk-tinged Bollywood and Sufi songs.</p><div class="meta"><b>Date</b><span>Sun 22 Nov, 7 PM</span><b>Where</b><span>Rajpath Club, about 25 min (est.)</span><b>Price</b><span>From Rs 1,299</span><b>Tickets</b><span>District</span><b>Sales</b><span>Listed with a buy button</span><b>Book by</b><span><b style="color:var(--accent)">By Wed 18 Nov</b></span></div><p class="mute"> <a href="https://www.district.in/events/papon-live-in-concert-ahmedabad-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Mere Krishn <span class="tag unc">SHOW TIMES UNCONFIRMED</span></h4><p class="what">Large live stage play on Lord Krishn's life, in Hindi, seated.</p><div class="meta"><b>Date</b><span>Sat 21 and Sun 22 Nov, gates 3:30 PM</span><b>Where</b><span>AUDA Auditorium, Shela, about 20 min (est.)</span><b>Price</b><span>From Rs 1,000</span><b>Tickets</b><span>District</span><b>Sales</b><span>Listed with a buy button</span><b>Book by</b><span><b style="color:var(--accent)">By Wed 18 Nov</b></span></div><p class="mute"> <a href="https://www.district.in/events/mere-krishn-a-live-theatrical-experience-of-shree-krishns-life-ahmedabad-03-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Rolling Loud India <span class="tag conf">CONFIRMED</span></h4><p class="what">Big two-day hip-hop festival (Burna Boy, Karan Aujla, Metro Boomin, Skepta).</p><div class="meta"><b>Date</b><span>Sat 12 and Sun 13 Dec</span><b>Where</b><span>Navi Mumbai, a flight away (not a drive)</span><b>Price</b><span>From Rs 5,500</span><b>Tickets</b><span>District only</span><b>Sales</b><span>On sale. A "pay half now, rest later" option has its last payment on Fri 20 Nov, 11:59 PM (per Time Out).</span><b>Book by</b><span><b style="color:var(--accent)">By Fri 20 Nov if wanted</b></span></div><p class="mute">Far away, so only if you want a trip. <a href="https://www.district.in/events/rolling-loud-india-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Sachin-Jigar live <span class="tag unc">NO TICKET PAGE FOUND</span></h4><p class="what">Mumbai composer duo behind many Hindi and Gujarati film hits.</p><div class="meta"><b>Date</b><span>Sat 5 Dec, time not found</span><b>Where</b><span>Vivenza, drive time not checked</span><b>Price</b><span>Not found</span><b>Tickets</b><span>Likely BookMyShow, District or Paytm Insider (per DeshGujarat)</span><b>Sales</b><span>No ticket page found yet</span><b>Book by</b><span><b style="color:var(--accent)">Check by Fri 27 Nov</b></span></div><p class="mute"> <a href="https://deshgujarat.com/2026/11/09/upcoming-concerts-in-ahmedabad-2026-27-diljit-dosanjh-arijit-singh-sonu-nigam-papon-ar-rahman-among-artists-to-perform/">Source</a></p></div>
+<div class="item"><h4>Ultimate Music Festival <span class="tag conf">CONFIRMED</span></h4><p class="what">Two-day outdoor pop and indie festival; Day 2 has Aditya Rikhari (soft indie-pop). Vegetarian-only food, no alcohol.</p><div class="meta"><b>Date</b><span>Sat 12 Dec 4 PM to Sun 13 Dec 10 PM</span><b>Where</b><span>Venue to be announced</span><b>Price</b><span>From Rs 1,299</span><b>Tickets</b><span>District</span><b>Sales</b><span>Listed with a buy button</span><b>Book by</b><span><b style="color:var(--accent)">By Sat 5 Dec, once the venue is named</b></span></div><p class="mute">Pick one day. <a href="https://www.district.in/events/ultimate-music-festival-ahmedabad-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Hardik Dave and Friends, "Sam" <span class="tag conf">CONFIRMED</span></h4><p class="what">Storytelling concert built on traditional Indian sounds: voice, iktara (one-string folk instrument), tabla and mridangam.</p><div class="meta"><b>Date</b><span>Sun 10 Jan 2027, 8 PM (gates 7:30)</span><b>Where</b><span>Shreyas Foundation, about 40 min (est.)</span><b>Price</b><span>From Rs 799</span><b>Tickets</b><span>District</span><b>Sales</b><span>Listed with a buy button</span><b>Book by</b><span><b style="color:var(--accent)">By mid Dec</b></span></div><p class="mute">Year not printed on the page; the weekday matches 2027. <a href="https://www.district.in/events/sam-hardik-dave-friends-live-in-concert-by-samraga-jan10-2027-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Shreya Ghoshal, Unstoppable Tour <span class="tag conf">CONFIRMED</span></h4><p class="what">One of India's best-loved melodic film singers.</p><div class="meta"><b>Date</b><span>Sat 27 Feb 2027, 6 PM (gates 4 PM)</span><b>Where</b><span>Shankus Farm, drive time not checked</span><b>Price</b><span>From Rs 2,000</span><b>Tickets</b><span>District</span><b>Sales</b><span>Page says general sale is live (its sale dates look out of date)</span><b>Book by</b><span><b style="color:var(--accent)">By early Jan</b></span></div><p class="mute">Just after the 3-month window but sells early. <a href="https://www.district.in/events/shreya-ghoshal-the-unstoppable-india-tour-ahmedabad-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Candlelight: Tribute to Arijit Singh <span class="tag unc">ONE SOURCE</span></h4><p class="what">Instrumental (strings) concert of Arijit Singh songs by candlelight, open-air amphitheatre. A Valentine's special runs at 8:30 PM.</p><div class="meta"><b>Date</b><span>Sat 13 Feb 2027, 6:30 PM</span><b>Where</b><span>Natarani Amphitheatre, about 35 min (est.)</span><b>Price</b><span>From Rs 899</span><b>Tickets</b><span>Live Your City (Fever)</span><b>Sales</b><span>Listed</span><b>Book by</b><span><b style="color:var(--accent)">By mid Jan</b></span></div><p class="mute"> <a href="https://liveyourcity.com/en/ahmedabad/candlelight">Source</a></p></div>
+<div class="item"><h4>Satinder Sartaaj, "The Philosophy of Resonance" <span class="tag unc">SALE NOT OPEN</span></h4><p class="what">Punjabi Sufi-style singer-poet; calm, poetic evening.</p><div class="meta"><b>Date</b><span>Sun 28 Feb 2027, 7 PM</span><b>Where</b><span>EKA Arena, drive time not checked</span><b>Price</b><span>Not listed</span><b>Tickets</b><span>District</span><b>Sales</b><span>Not on sale yet (sign-up for alerts)</span><b>Book by</b><span><b style="color:var(--accent)">When sale opens</b></span></div><p class="mute"> <a href="https://www.district.in/events/the-philosophy-of-resonance-satinder-sartaaj-live-in-ahmedabad-2027-buy-tickets">Source</a></p></div>
+<h2>Top picks, next 3 weeks</h2>
 <div class="wrap"><table class="sum">
-<tr><td>16-22 Nov</td><td>Bhadra Festival, Thu 19 Nov (free, classical, register first). Also Papon Sun 22 Nov, Mere Krishn 21-22 Nov.</td></tr>
-<tr><td>23-29 Nov</td><td>Raj Sheth comedy or Kajol Srinivasan (Sat 28), the best Western-style comedy found. Backup: Abhivyakti art, Sunday market.</td></tr>
-<tr><td>30 Nov-6 Dec</td><td>Yash Shah live (Wed 2 Dec) or Sachin-Jigar (Sat 5 Dec, unconfirmed). Small: Nalsarovar birds.</td></tr>
-<tr><td>7-13 Dec</td><td>Ultimate Music Festival, 12-13 Dec (vegetarian only, venue pending).</td></tr></table></div>
-<div class="note"><b>Honest read on Western and modern.</b> Little exists. Ahmedabad comedy is mostly Hindi or Hinglish at small venues (Art House India, Mishty Studio, Doozer Club, Sproute); no big English touring comic (Zakir, Anubhav Bassi, Vir Das and similar) was listed here for Nov-Dec. I found <b>no dated jazz, rock-band, indie-club or DJ night</b> in Ahmedabad or Gandhinagar for these weeks. Rolling Loud India (12-13 Dec, Burna Boy, Karan Aujla) is in Navi Mumbai, not here. Nearest modern music is Yash Shah and Ultimate Music Festival. Recheck Mondays as venues list only a few weeks ahead.</div>
-
+<tr><td>16-22 Nov</td><td>Bhadra Festival, Thu 19 Nov (free classical evening). Also Papon, Sun 22 Nov, and Mere Krishn, 21-22 Nov.</td></tr>
+<tr><td>23-29 Nov</td><td>Stand-up: Kajol Srinivasan (Sat 28) or Raj Sheth (Sun 29). Also the Gujarati and shayari comedy evenings on Sun 29 Nov.</td></tr>
+<tr><td>30 Nov-6 Dec</td><td>Yash Shah live (Wed 2 Dec), or Sachin-Jigar (Sat 5 Dec, unconfirmed). Easy day out: Nalsarovar birds.</td></tr></table></div>
+<h2>Western and modern: honest note</h2><p>Little exists here. Comedy is mostly Hindi or Hinglish at small venues. I found no big English-language touring comic and no dated jazz, rock-band, indie-club or DJ night in or near the city for these weeks. Samay Raina's India tour (Nov to Apr) does not list an Ahmedabad date yet; worth checking District.</p>
+<h2>Details by type (16 Nov to 6 Dec)</h2>
 <h2>1. Classical Indian</h2>
-<div class="item"><h4>Bhadra Festival (concert evening) <span class="tag unc">UNCONFIRMED</span></h4><p class="what">A free annual arts festival in Ahmedabad Old City. This evening: Ustad Shujaat Khan (famous sitar player, a stringed instrument) and Ustad Fazal Qureshi (tabla, the paired hand drums; son of the late tabla master Ustad Alla Rakha) playing with a saxophone, keyboard and drums band.</p>
-<div class="meta"><b>When</b><span>Thu 19 Nov. Festival from 4 PM, main concert 7:15 PM</span><b>Where</b><span>Bhadra Fort, Bhadra Plaza and Teen Darwaza, Old City</span><b>Price</b><span>Free, but registration on BookMyShow is compulsory; first come first served</span><b>Drive</b><span>about 40 min (est.); old-city parking is tight</span></div>
-<p class="mute">One article only. Late Thursday night. Food on site not checked. <a href="https://www.altbollywood.com/post/bhadra-festival-2026-ahmedabad-fazal-qureshi-shujaat-khan-teen-darwaza">Source</a></p>
-</div>
+<div class="item"><h4>Bhadra Festival, concert evening <span class="tag unc">ONE ARTICLE</span></h4><p class="what">A free yearly arts festival in the Old City. This evening: Ustad Shujaat Khan (famous sitar player) and Ustad Fazal Qureshi (tabla, the paired hand drums; son of the late tabla master Ustad Alla Rakha) with a saxophone, keyboard and drums band.</p><div class="meta"><b>When</b><span>Thu 19 Nov. Festival from 4 PM, main concert 7:15 PM</span><b>Where</b><span>Bhadra Fort, Bhadra Plaza and Teen Darwaza, Old City</span><b>Price</b><span>Free; register on BookMyShow (compulsory), first come first served</span><b>From home</b><span>about 40 min (est.); parking is tight</span></div><p class="mute">Food on site not checked.  <a href="https://www.altbollywood.com/post/bhadra-festival-2026-ahmedabad-fazal-qureshi-shujaat-khan-teen-darwaza">Source</a></p></div>
 <h2>2. Old-school Indian (devotional, Gujarati, shayari)</h2>
-<div class="item"><h4>Mere Krishn <span class="tag unc">DATES OK, SLOTS UNCONFIRMED</span></h4><p class="what">A big live stage play of Lord Krishn's life, in Hindi, about 3 hours, seated. <span class="tag fam">FAMILY</span></p>
-<div class="meta"><b>When</b><span>Sat 21 and Sun 22 Nov. Gates 3:30 PM; show slot times not shown</span><b>Where</b><span>AUDA Auditorium, Shela</span><b>Price</b><span>from Rs 1,000</span><b>Drive</b><span>about 15-20 min (est.)</span></div>
-<p class="mute"> <a href="https://www.district.in/events/mere-krishn-a-live-theatrical-experience-of-shree-krishns-life-ahmedabad-03-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Dalaliyo, Hardik Butani <span class="tag conf">CONFIRMED on page</span></h4><p class="what">Gujarati stand-up comedy by Hardik Butani (a Gujarati comic).</p>
-<div class="meta"><b>When</b><span>Tue 17 Nov, 9 PM (gates 8 PM)</span><b>Where</b><span>Doozer Club</span><b>Price</b><span>from Rs 499</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute">Late weeknight. <a href="https://www.district.in/events/dalaliyo-a-gujarati-comedy-show-by-hardik-butani-nov17-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>The Amit Khuva Show <span class="tag conf">LISTED on District</span></h4><p class="what">Clean (no swearing) Gujarati stand-up comedy by Amit Khuva.</p>
-<div class="meta"><b>When</b><span>Sun 29 Nov, 8 PM</span><b>Where</b><span>Mishty Studio</span><b>Price</b><span>from Rs 249</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute">Taken from the District comedy list page; I did not open this ticket page. <a href="https://www.district.in/events/the-amit-khuva-show-clean-gujarati-standup-comedy-nov29-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Ek Shaam, Hazaar Baatein, Ranmal Jain <span class="tag conf">CONFIRMED on page</span></h4><p class="what">An evening of shayari (Urdu-style poetry) mixed with light comedy and life stories, in Hindi. Age 16+.</p>
-<div class="meta"><b>When</b><span>Sun 29 Nov, 7 PM (gates 6:30)</span><b>Where</b><span>Mehdi Nawaz Jung Hall</span><b>Price</b><span>from Rs 499</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute"> <a href="https://www.district.in/events/ek-shaam-hazaar-baatein-nov29-2026-buy-tickets">Source</a></p>
-</div>
-<h2>3. New-school Indian (modern Bollywood, pop, singer-songwriters)</h2>
-<div class="item"><h4>Papon live <span class="tag conf">CONFIRMED on page</span></h4><p class="what">Papon is a singer known for soft, folk-tinged Bollywood songs ("Moh Moh Ke Dhaage") and Sufi-style fusion. Calm, melodic.</p>
-<div class="meta"><b>When</b><span>Sun 22 Nov, 7 PM</span><b>Where</b><span>Rajpath Club</span><b>Price</b><span>from Rs 1,299</span><b>Drive</b><span>about 25 min (est.)</span></div>
-<p class="mute">One other source said 21 Nov; District says Sun 22 Nov. <a href="https://www.district.in/events/papon-live-in-concert-ahmedabad-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Sachin-Jigar live <span class="tag unc">UNCONFIRMED</span></h4><p class="what">A Mumbai music-composer duo behind many Hindi and Gujarati film hits; expect a melodic film-music night.</p>
-<div class="meta"><b>When</b><span>Sat 5 Dec (time not found)</span><b>Where</b><span>Vivenza</span><b>Price</b><span>Not found</span><b>Drive</b><span>not checked</span></div>
-<p class="mute">Named only on a news list; no ticket page found. <a href="https://deshgujarat.com/2026/11/09/upcoming-concerts-in-ahmedabad-2026-27-diljit-dosanjh-arijit-singh-sonu-nigam-papon-ar-rahman-among-artists-to-perform/">Source</a></p>
-</div>
-<div class="item"><h4>Yash Shah Live <span class="tag conf">CONFIRMED on page</span></h4><p class="what">A young singer-songwriter performing his own songs plus popular tunes, relaxed club evening. Genre not stated.</p>
-<div class="meta"><b>When</b><span>Wed 2 Dec, 8 PM (gates 7 PM)</span><b>Where</b><span>Doozer Club</span><b>Price</b><span>from Rs 499</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute">Weeknight. ID needed at the door. <a href="https://www.district.in/events/yash-shah-live-an-evening-of-music-dec2-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Darshan Raval, Love Letters Tour <span class="tag conf">CONFIRMED on page</span></h4><p class="what">Darshan Raval is a pop and romantic-song singer with a young fanbase (Gujarat-born).</p>
-<div class="meta"><b>When</b><span>Sun 22 Nov, 5:30 PM</span><b>Where</b><span>Savanna Party Lawn</span><b>Price</b><span>from Rs 1,499</span><b>Drive</b><span>not checked</span></div>
-<p class="mute">Same evening as Papon. Likely a big young crowd. <a href="https://www.district.in/events/darshan-raval-love-letter-india-tour-ahmedabad-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Ultimate Music Festival <span class="tag conf">CONFIRMED, VENUE PENDING</span></h4><p class="what">Two-day outdoor pop and indie festival; Day 2 has Aditya Rikhari (soft indie-pop singer). Vegetarian only, no alcohol, food sold on site.</p>
-<div class="meta"><b>When</b><span>Sat 12 Dec 4 PM to Sun 13 Dec 10 PM</span><b>Where</b><span>Venue to be announced</span><b>Price</b><span>from Rs 1,299</span><b>Drive</b><span>unknown until venue named</span></div>
-<p class="mute">Pick one day. <a href="https://www.district.in/events/ultimate-music-festival-ahmedabad-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Arijit Singh (info only, outside window) <span class="tag unc">UNCONFIRMED</span></h4><p class="what">Arijit Singh is India's biggest film-music singer (romantic Hindi hits such as "Tum Hi Ho"). This is his 20-year anniversary stadium tour.</p>
-<div class="meta"><b>When</b><span>Sat 9 Jan 2027 (the 9 Jan date comes from DeshGujarat; other sources say "January")</span><b>Where</b><span>Narendra Modi Stadium</span><b>Price</b><span>Not found. Sold only on thumpN; general sale opened 13 Oct, may be sold out</span><b>Drive</b><span>about 30 min plus stadium walk (est.)</span></div>
-<p class="mute"><a href="https://www.esquireindia.co.in/culture/books-and-music/arijit-singh-india-tour-2027-dates-schedule-ticket-sale-date-how-to-book-and-more">Source</a></p>
-</div>
-<div class="item"><h4>Diljit Dosanjh (recommend skip) <span class="tag unc">UNCONFIRMED</span></h4><p class="what">Punjabi pop superstar; huge standing stadium show.</p>
-<div class="meta"><b>When</b><span>Sat 21 Nov</span><b>Where</b><span>Narendra Modi Stadium</span><b>Price</b><span>BookMyShow, price not found</span><b>Drive</b><span>about 30 min (est.)</span></div>
-<p class="mute"> <a href="https://deshgujarat.com/2026/11/09/upcoming-concerts-in-ahmedabad-2026-27-diljit-dosanjh-arijit-singh-sonu-nigam-papon-ar-rahman-among-artists-to-perform/">Source</a></p>
-</div>
+<div class="item"><h4>Mere Krishn <span class="tag unc">SLOT TIMES UNCONFIRMED</span></h4><p class="what">A big live stage play of Lord Krishn's life, in Hindi, about 3 hours, seated.</p><div class="meta"><b>When</b><span>Sat 21 and Sun 22 Nov, gates 3:30 PM</span><b>Where</b><span>AUDA Auditorium, Shela</span><b>Price</b><span>From Rs 1,000</span><b>From home</b><span>about 20 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/mere-krishn-a-live-theatrical-experience-of-shree-krishns-life-ahmedabad-03-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Dalaliyo, Hardik Butani <span class="tag conf">CONFIRMED</span></h4><p class="what">Gujarati stand-up comedy by Hardik Butani.</p><div class="meta"><b>When</b><span>Tue 17 Nov, 9 PM (gates 8 PM)</span><b>Where</b><span>Doozer Club</span><b>Price</b><span>From Rs 499</span><b>From home</b><span>about 35 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/dalaliyo-a-gujarati-comedy-show-by-hardik-butani-nov17-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>The Amit Khuva Show <span class="tag unc">LISTED, TICKET PAGE NOT OPENED</span></h4><p class="what">Clean (no swearing) Gujarati stand-up by Amit Khuva.</p><div class="meta"><b>When</b><span>Sun 29 Nov, 8 PM</span><b>Where</b><span>Mishty Studio</span><b>Price</b><span>From Rs 249</span><b>From home</b><span>about 35 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/the-amit-khuva-show-clean-gujarati-standup-comedy-nov29-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Ek Shaam, Hazaar Baatein (Ranmal Jain) <span class="tag conf">CONFIRMED</span></h4><p class="what">An evening of shayari (Urdu-style poetry) with light comedy and life stories, in Hindi. Age 16+.</p><div class="meta"><b>When</b><span>Sun 29 Nov, 7 PM (gates 6:30)</span><b>Where</b><span>Mehdi Nawaz Jung Hall</span><b>Price</b><span>From Rs 499</span><b>From home</b><span>about 35 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/ek-shaam-hazaar-baatein-nov29-2026-buy-tickets">Source</a></p></div>
+<h2>3. New-school Indian (modern Bollywood and pop)</h2>
+<div class="item"><h4>Papon live <span class="tag conf">CONFIRMED</span></h4><p class="what">Singer of soft, folk-tinged Bollywood and Sufi songs ("Moh Moh Ke Dhaage").</p><div class="meta"><b>When</b><span>Sun 22 Nov, 7 PM</span><b>Where</b><span>Rajpath Club</span><b>Price</b><span>From Rs 1,299</span><b>From home</b><span>about 25 min (est.)</span></div><p class="mute">One other source said 21 Nov; District says Sun 22 Nov.  <a href="https://www.district.in/events/papon-live-in-concert-ahmedabad-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Darshan Raval, Love Letters Tour <span class="tag conf">CONFIRMED</span></h4><p class="what">Pop and romantic-song singer with a young following.</p><div class="meta"><b>When</b><span>Sun 22 Nov, 5:30 PM</span><b>Where</b><span>Savanna Party Lawn</span><b>Price</b><span>From Rs 1,499</span><b>From home</b><span>drive time not checked</span></div><p class="mute"> <a href="https://www.district.in/events/darshan-raval-love-letter-india-tour-ahmedabad-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Yash Shah Live <span class="tag conf">CONFIRMED</span></h4><p class="what">A young singer-songwriter: his own songs plus popular tunes, relaxed club evening.</p><div class="meta"><b>When</b><span>Wed 2 Dec, 8 PM (gates 7 PM)</span><b>Where</b><span>Doozer Club</span><b>Price</b><span>From Rs 499</span><b>From home</b><span>about 35 min (est.)</span></div><p class="mute">ID needed at the door.  <a href="https://www.district.in/events/yash-shah-live-an-evening-of-music-dec2-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Sachin-Jigar live <span class="tag unc">NO TICKET PAGE</span></h4><p class="what">Mumbai composer duo behind many Hindi and Gujarati film hits; a melodic film-music night.</p><div class="meta"><b>When</b><span>Sat 5 Dec, time not found</span><b>Where</b><span>Vivenza</span><b>Price</b><span>Not found</span><b>From home</b><span>not checked</span></div><p class="mute"> <a href="https://deshgujarat.com/2026/11/09/upcoming-concerts-in-ahmedabad-2026-27-diljit-dosanjh-arijit-singh-sonu-nigam-papon-ar-rahman-among-artists-to-perform/">Source</a></p></div>
 <h2>4. Western and modern (comedy, bands, DJ, jazz, indie)</h2>
-<div class="item"><h4>Snarky by Kajol Srinivasan <span class="tag conf">CONFIRMED</span> <span class="tag unc">LANGUAGE NOT STATED</span></h4><p class="what">Online comic "LOLrakshak"; one-hour sharp, sarcastic comedy on news and powerful people. Age 18+, indoor, AC, open seating.</p>
-<div class="meta"><b>When</b><span>Sat 28 Nov, 9 PM (gates 8:50)</span><b>Where</b><span>Art House India</span><b>Price</b><span>from Rs 249</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute">Best bet for English-style stand-up, but the page does not say the language. Late-ish Saturday. <a href="https://www.district.in/events/snarky-by-kajol-srinivasan-nov28-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Toronto to Paris, Raj Sheth <span class="tag conf">CONFIRMED</span> <span class="tag unc">VENUE UNSURE</span></h4><p class="what">Raj Sheth, a Gujarati-origin comic: observational comedy on life abroad and Indian student life. Language: Hindi, English and Gujarati mix. Age 18+.</p>
-<div class="meta"><b>When</b><span>Sun 29 Nov, 8 PM</span><b>Where</b><span>Art House India (page also says Natrang Studio, so venue unsure)</span><b>Price</b><span>from Rs 199</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute">The best English-friendly mixed-language show I found. Same night as Amit Khuva and Ranmal Jain. <a href="https://www.district.in/events/toronto-to-paris-ft-raj-sheth-dec13-2025-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Log Kya Kahenge, stand-up show <span class="tag unc">LANGUAGE UNCONFIRMED</span></h4><p class="what">Local stand-up night; language not stated (title is Hindi).</p>
-<div class="meta"><b>When</b><span>Sat 21 Nov, 8:30 PM</span><b>Where</b><span>Art House India</span><b>Price</b><span>from Rs 199</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute">From the District list; the link name differs, so confirm on the ticket page. <a href="https://www.district.in/events/never-date-a-doctor-a-stand-up-comedy-trial-show-sep12-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Main Pal Do Pal Ka Shayar Hoon <span class="tag unc">UNCONFIRMED</span></h4><p class="what">Comedy night; title is Hindi (a spoof of a famous song). Language not stated.</p>
-<div class="meta"><b>When</b><span>Sun 6 Dec, 7:45 PM</span><b>Where</b><span>Art House India</span><b>Price</b><span>from Rs 249</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute">Link name suggests an older date; confirm. <a href="https://www.district.in/events/main-pal-do-pal-ka-shayar-hoon-jan31-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Wits and Bits, curated comedy <span class="tag unc">UNCONFIRMED</span></h4><p class="what">A mixed-comic showcase night in a cafe. Language not stated.</p>
-<div class="meta"><b>When</b><span>Wed 18 Nov, 10 PM</span><b>Where</b><span>Sproute cafe, Bodakdev</span><b>Price</b><span>from Rs 149</span><b>Drive</b><span>about 25-35 min (est.)</span></div>
-<p class="mute">Late weeknight. Cafe food not checked. <a href="https://www.district.in/events/wits-and-bits-curated-comedy-show-sep10-2025-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Apna Open Mic, 76th edition <span class="tag unc">UNCONFIRMED</span></h4><p class="what">Open mic: new comics and amateurs try material; hit or miss, cheap.</p>
-<div class="meta"><b>When</b><span>Sun 29 Nov, 7 PM</span><b>Where</b><span>Mishty Mini Studio</span><b>Price</b><span>Rs 150</span><b>Drive</b><span>about 30-40 min (est.)</span></div>
-<p class="mute"> <a href="https://www.district.in/events/apna-open-mic-76th-edition-ahmedabad-nov29-2026-buy-tickets">Source</a></p>
-</div>
+<div class="item"><h4>Snarky by Kajol Srinivasan <span class="tag conf">CONFIRMED</span><span class="tag unc">LANGUAGE NOT STATED</span></h4><p class="what">Online comic "LOLrakshak"; one hour of sharp, sarcastic comedy on news and the powerful. 18+, indoor, AC, open seating.</p><div class="meta"><b>When</b><span>Sat 28 Nov, 9 PM (gates 8:50)</span><b>Where</b><span>Art House India</span><b>Price</b><span>From Rs 249</span><b>From home</b><span>about 35 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/snarky-by-kajol-srinivasan-nov28-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Toronto to Paris, Raj Sheth <span class="tag conf">CONFIRMED</span><span class="tag unc">VENUE UNSURE</span></h4><p class="what">Gujarati-origin comic: observational comedy on life abroad and student life. Hindi, English and Gujarati mix. 18+.</p><div class="meta"><b>When</b><span>Sun 29 Nov, 8 PM</span><b>Where</b><span>Art House India (page also says Natrang Studio)</span><b>Price</b><span>From Rs 199</span><b>From home</b><span>about 35 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/toronto-to-paris-ft-raj-sheth-dec13-2025-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Log Kya Kahenge, stand-up show <span class="tag unc">LANGUAGE UNCONFIRMED</span></h4><p class="what">Local stand-up night; title is Hindi, language not stated.</p><div class="meta"><b>When</b><span>Sat 21 Nov, 8:30 PM</span><b>Where</b><span>Art House India</span><b>Price</b><span>From Rs 199</span><b>From home</b><span>about 35 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/never-date-a-doctor-a-stand-up-comedy-trial-show-sep12-2026-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Wits and Bits, curated comedy <span class="tag unc">UNCONFIRMED</span></h4><p class="what">A mixed-comic showcase night in a cafe.</p><div class="meta"><b>When</b><span>Wed 18 Nov, 10 PM</span><b>Where</b><span>Sproute cafe, Bodakdev</span><b>Price</b><span>From Rs 149</span><b>From home</b><span>about 30 min (est.)</span></div><p class="mute">Late weeknight.  <a href="https://www.district.in/events/wits-and-bits-curated-comedy-show-sep10-2025-buy-tickets">Source</a></p></div>
+<div class="item"><h4>Apna Open Mic, 76th edition <span class="tag unc">UNCONFIRMED</span></h4><p class="what">Open mic where new comics try fresh material; hit or miss, cheap.</p><div class="meta"><b>When</b><span>Sun 29 Nov, 7 PM</span><b>Where</b><span>Mishty Mini Studio</span><b>Price</b><span>Rs 150</span><b>From home</b><span>about 35 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/apna-open-mic-76th-edition-ahmedabad-nov29-2026-buy-tickets">Source</a></p></div>
 <h2>5. Food and special meals</h2>
-<div class="item"><h4>Saray Buffet 3.0 <span class="tag unc">MENU UNCONFIRMED</span></h4><p class="what">A buffet at Saray by Tanoor restaurant. Cuisine and veg or gluten-free options NOT checked (Tanoor suggests tandoor grill, so check first).</p>
-<div class="meta"><b>When</b><span>Sun 15 Nov onwards, multiple dates</span><b>Where</b><span>Saray by Tanoor</span><b>Price</b><span>Rs 1,400</span><b>Drive</b><span>not checked</span></div>
-<p class="mute">Only add if they confirm a pure-veg, gluten-free-friendly spread. <a href="https://www.district.in/events/saray-buffet-30-oct4-2026-buy-tickets">Source</a></p>
-</div>
-<div class="item"><h4>Kliya Cafe social events (Lunch With Strangers, Coffee Conversations, Laughter Therapy) <span class="tag unc">DATES UNCONFIRMED</span></h4><p class="what">Small cafe meetups for meeting new people: shared lunch, coffee chats, laughter sessions.</p>
-<div class="meta"><b>When</b><span>Listed "from 15 Nov, multiple dates"; link dates look old</span><b>Where</b><span>Kliya Cafe</span><b>Price</b><span>from Rs 199</span><b>Drive</b><span>not checked</span></div>
-<p class="mute">Likely skip; mentioned so you can say no. <a href="https://www.district.in/events/lunch-with-strangers-ahmedabad-jul11-2026-buy-tickets">Source</a></p>
-</div>
+<div class="item"><h4>Saray Buffet 3.0 <span class="tag unc">MENU UNCONFIRMED</span></h4><p class="what">A buffet at Saray by Tanoor restaurant. Cuisine and vegetarian or gluten-free options not checked.</p><div class="meta"><b>When</b><span>From Sun 15 Nov, multiple dates</span><b>Where</b><span>Saray by Tanoor</span><b>Price</b><span>Rs 1,400</span><b>From home</b><span>not checked</span></div><p class="mute">Ask about a pure-vegetarian, gluten-free spread first.  <a href="https://www.district.in/events/saray-buffet-30-oct4-2026-buy-tickets">Source</a></p></div>
 <h2>6. Art and markets</h2>
-<div class="item"><h4>Abhivyakti City Arts Project <span class="tag unc">UNCONFIRMED</span></h4><p class="what">City-wide public art, music, dance and theatre pop-ups.</p>
-<div class="meta"><b>When</b><span>Fri 27 Nov to Sun 13 Dec</span><b>Where</b><span>Several public spaces in Ahmedabad (list not found)</span><b>Price</b><span>Not found, likely free</span><b>Drive</b><span>varies</span></div>
-<p class="mute">Source is a competition page. <a href="https://internshala.com/competitions/abhivyakti-city-arts-project-2026/">Source</a></p>
-</div>
-<div class="item"><h4>Arthshila gallery exhibition <span class="tag unc">UNCONFIRMED</span></h4><p class="what">Visual-arts show at a gallery; quiet and seated-free. Title not seen.</p>
-<div class="meta"><b>When</b><span>Runs to Sun 17 Jan 2027</span><b>Where</b><span>Ahmedabad gallery (details not seen)</span><b>Price</b><span>not found</span><b>Drive</b><span>not checked</span></div>
-<p class="mute"> <a href="https://www.arthshila.org/?p=4649">Source</a></p>
-</div>
-<div class="item"><h4>Ravivari (Gujari) Sunday market <span class="tag unc">HOURS UNCONFIRMED</span></h4><p class="what">Weekly Sunday flea and local-goods market on the Sabarmati riverfront.</p>
-<div class="meta"><b>When</b><span>Every Sunday; hours differ by source (about 7-8 AM to 6-8 PM)</span><b>Where</b><span>Sabarmati riverfront</span><b>Price</b><span>Free entry</span><b>Drive</b><span>about 30 min (est.)</span></div>
-<p class="mute">Street food mostly not gluten-free; eat first. <a href="https://www.gujarattourism.com/central-zone/ahmedabad/ravivari--sunday-market--ahmedabad.html">Source</a></p>
-</div>
+<div class="item"><h4>Abhivyakti City Arts Project <span class="tag unc">UNCONFIRMED</span></h4><p class="what">City-wide public art, music, dance and theatre pop-ups.</p><div class="meta"><b>When</b><span>Fri 27 Nov to Sun 13 Dec</span><b>Where</b><span>Several public spaces (list not found)</span><b>Price</b><span>Not found, likely free</span><b>From home</b><span>varies</span></div><p class="mute">Source is a competition page.  <a href="https://internshala.com/competitions/abhivyakti-city-arts-project-2026/">Source</a></p></div>
+<div class="item"><h4>Arthshila gallery exhibition <span class="tag unc">UNCONFIRMED</span></h4><p class="what">A visual-arts show at a gallery; quiet and unhurried. Title not seen.</p><div class="meta"><b>When</b><span>Runs to Sun 17 Jan 2027</span><b>Where</b><span>Ahmedabad gallery (details not seen)</span><b>Price</b><span>Not found</span><b>From home</b><span>not checked</span></div><p class="mute"> <a href="https://www.arthshila.org/?p=4649">Source</a></p></div>
+<div class="item"><h4>Ravivari (Gujari) Sunday market <span class="tag unc">HOURS UNCONFIRMED</span></h4><p class="what">Weekly Sunday flea and local-goods market on the riverfront.</p><div class="meta"><b>When</b><span>Every Sunday; hours differ by source (about 7-8 AM to 6-8 PM)</span><b>Where</b><span>Sabarmati riverfront</span><b>Price</b><span>Free entry</span><b>From home</b><span>about 30 min (est.)</span></div><p class="mute">Street food is mostly not gluten-free; eat first.  <a href="https://www.gujarattourism.com/central-zone/ahmedabad/ravivari--sunday-market--ahmedabad.html">Source</a></p></div>
 <h2>7. Nature, wellness and spiritual</h2>
-<div class="item"><h4>Nalsarovar bird sanctuary <span class="tag unc">FEE UNCONFIRMED</span></h4><p class="what">A big lake with a boat ride to see winter migratory birds.</p>
-<div class="meta"><b>When</b><span>Any day; best early morning, Nov to Feb</span><b>Where</b><span>Nalsarovar</span><b>Price</b><span>Entry about Rs 75 (may be outdated)</span><b>Drive</b><span>about 1 hr 15 min (est.)</span></div>
-<p class="mute">Worth it only as a morning outing. <span class="tag fam">FAMILY</span> <a href="https://incredibleindia.gov.in/en/gujarat/ahmedabad/an-avian-affair-at-nal-sarovar">Source</a></p>
-</div>
-<div class="item"><h4>home Stepwell, Sarkhej Roza, Thol Lake <span class="tag unc">HOURS NOT CHECKED</span></h4><p class="what">Old stepwell, a historic tomb complex and a bird lake, all gentle half-day visits.</p>
-<div class="meta"><b>When</b><span>Any day, daytime</span><b>Where</b><span>Near home / Ahmedabad / Thol</span><b>Price</b><span>Token fee or free (not checked)</span><b>Drive</b><span>5 to 45 min (est.)</span></div>
-<p class="mute">No dated listing; general local knowledge. </p>
-</div>
-<div class="item"><h4>The Lost City of Dwarka (already seen) <span class="tag conf">SEEN by Rushi 12 Nov</span></h4><p class="what">Immersive show on the Dwarka legend.</p>
-<div class="meta"><b>When</b><span>Until Mon 30 Nov</span><b>Where</b><span>Palladium Mall</span><b>Price</b><span>from Rs 599</span><b>Drive</b><span>about 25 min</span></div>
-<p class="mute">Listed only so it is not suggested again. <a href="https://www.district.in/events/the-lost-city-of-dwarka-ahemdabad-2026-buy-tickets">Source</a></p>
-</div>
-<h2>Just after the window</h2><ul>
-<li>Mon 21 Dec, 7:30 PM: Sonu Nigam (veteran Bollywood singer), GIFT City, price not found <span class="tag unc">UNCONFIRMED</span></li>
-<li>Kankaria Carnival, tentatively 25-31 Dec; Hungrito Food Fest usually 25-31 Dec; no 2026 dates yet <span class="tag unc">UNCONFIRMED</span></li>
-<li>Sun 28 Feb: Satinder Sartaaj (Punjabi Sufi-style singer), EKA Arena, <a href="https://www.district.in/events/the-philosophy-of-resonance-satinder-sartaaj-live-in-ahmedabad-2027-buy-tickets">District</a>; Sat 27 Feb Shreya Ghoshal.</li></ul>
-
+<div class="item"><h4>Nalsarovar bird sanctuary <span class="tag unc">FEE UNCONFIRMED</span></h4><p class="what">A big lake where a boat ride shows winter migratory birds.</p><div class="meta"><b>When</b><span>Any day; best early morning, Nov to Feb</span><b>Where</b><span>Nalsarovar</span><b>Price</b><span>Entry about Rs 75 (may be outdated)</span><b>From home</b><span>about 1 hr 15 min (est.)</span></div><p class="mute">Worth it as a morning outing.  <a href="https://incredibleindia.gov.in/en/gujarat/ahmedabad/an-avian-affair-at-nal-sarovar">Source</a></p></div>
+<div class="item"><h4>Old stepwell, Sarkhej Roza and Thol Lake <span class="tag unc">HOURS NOT CHECKED</span></h4><p class="what">Historic stepwell, a tomb complex and a bird lake; gentle half-day visits.</p><div class="meta"><b>When</b><span>Any day, daytime</span><b>Where</b><span>Around the city</span><b>Price</b><span>Token fee or free (not checked)</span><b>From home</b><span>5 to 45 min (est.)</span></div><p class="mute">No dated listing. </p></div>
+<div class="item"><h4>The Lost City of Dwarka <span class="tag conf">CONFIRMED</span></h4><p class="what">An immersive show (big visuals, sound, VR and AR) on the Dwarka legend. Standing only.</p><div class="meta"><b>When</b><span>Until Mon 30 Nov</span><b>Where</b><span>Palladium Mall</span><b>Price</b><span>From Rs 599</span><b>From home</b><span>about 25 min (est.)</span></div><p class="mute"> <a href="https://www.district.in/events/the-lost-city-of-dwarka-ahemdabad-2026-buy-tickets">Source</a></p></div>
+<h2>Later (7 Dec to mid Feb)</h2><ul class="later">
+<li>Sat-Sun 12-13 Dec: Ultimate Music Festival (see Book early).</li>
+<li>Mon 21 Dec, 7:30 PM: Sonu Nigam "Satrangi Re", GIFT City. Most coverage is from Dec 2025, so this may be last year's show. <span class="tag unc">UNCONFIRMED</span></li>
+<li>Around 25-31 Dec: Kankaria Carnival (free city festival, live concerts, light shows) and Hungrito Food Fest. No 2026 dates announced. <span class="tag unc">UNCONFIRMED</span></li>
+<li>Jan: International Flower Show, riverfront. Past editions ran 1-22 Jan; 2027 dates not published. <span class="tag unc">UNCONFIRMED</span></li>
+<li>10-14 Jan: International Kite Festival (Uttarayan), riverfront, free to watch; sources disagree on exact days. <span class="tag unc">UNCONFIRMED</span></li>
+<li>16-17 Jan: Modhera Uttarardh Mahotsav, classical dance at the Sun Temple, about 2 hours away. <span class="tag unc">UNCONFIRMED</span></li>
+<li>Mar 2027: A.R. Rahman, GIFT City. The District page currently shows the event as cancelled with the date to be announced. <span class="tag unc">UNCONFIRMED</span></li></ul>
+<h2>Sources</h2><ul class="mute"><li><a href="https://www.district.in/events/events-this-weekend-in-ahmedabad">District: events in Ahmedabad</a></li><li><a href="https://deshgujarat.com/2026/11/09/upcoming-concerts-in-ahmedabad-2026-27-diljit-dosanjh-arijit-singh-sonu-nigam-papon-ar-rahman-among-artists-to-perform/">DeshGujarat concerts list, 9 Nov 2026</a></li><li><a href="https://www.altbollywood.com/post/bhadra-festival-2026-ahmedabad-fazal-qureshi-shujaat-khan-teen-darwaza">Bhadra Festival article</a></li><li><a href="https://liveyourcity.com/en/ahmedabad/candlelight">Live Your City</a></li></ul>
 </main>
 </body>
 </html>
